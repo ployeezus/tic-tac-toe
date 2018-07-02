@@ -1,0 +1,11 @@
+td {
+    border: 100px solid lightblue;
+}
+
+td:hover {
+    background: darkgrey;
+}
+
+table {
+    border: 10px solid grey;
+}
