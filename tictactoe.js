@@ -19,6 +19,41 @@ const winningCombinations = [
     [3, 5, 7]
 ]
 
+function checkWinner() {
+    // Check if player has all values of each combination
+    for (let combos of winningCombinations) {
+        console.log("Combos: " + combos);
+        var matches = 0;
+        for (let items of playerSelections) {
+            if (combos.includes(items)) {
+                matches++;
+                if (matches == 3) {
+                    return true;
+                    console.log("win");
+                }
+            }
+            // } else { // go to the next combination
+            //     break;
+            // }
+            // if we made it through each combo without returning true,
+            // then there were no matches and player did not win
+            //return false
+        }
+    }
+}
+
+function checkDraw() {
+    return playerOSelections.length + playerXSelections.length >= cells.length
+}
+
+function resetGame() {
+    playerXSelections = new Array();
+    playerOSelections = new Array();
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].innerHTML = ""
+    }
+}
+
 //event listener
 
 handleClick = function (event) {
@@ -36,6 +71,16 @@ handleClick = function (event) {
 
     playerSelections.push(parseInt(cell.id));
 
+    if (checkWinner(playerSelections)) {
+        alert("Player " + currentPlayer + " wins!")
+        resetGame();
+    }
+
+    if (checkDraw()) {
+        alert("Draw!");
+        resetGame();
+    }
+
     // Swap players
     currentPlayer = nextPlayer;
 }
@@ -43,5 +88,5 @@ handleClick = function (event) {
 var cells = document.querySelectorAll("td");
 
 for (var i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('click', handleClick)
+    cells[i].addEventListener('click', handleClick);
 }
