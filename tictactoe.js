@@ -1,3 +1,5 @@
+//initialize variables
+
 var currentPlayer = "X";
 var nextPlayer = "O";
 
@@ -22,6 +24,20 @@ const winningCombinations = [
 handleClick = function (event) {
     var cell = event.target
     console.log(cell.id);
+    cell.innerHTML = currentPlayer;
+
+    if (currentPlayer === "X") {
+        playerSelections = playerXSelections;
+        nextPlayer = "O";
+    } else {
+        playerSelections = playerOSelections;
+        nextPlayer = "X";
+    }
+
+    playerSelections.push(parseInt(cell.id));
+
+    // Swap players
+    currentPlayer = nextPlayer;
 }
 
 var cells = document.querySelectorAll("td");
