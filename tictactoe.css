@@ -4,6 +4,7 @@ td {
 
 td:hover {
     background: darkgrey;
+    border: 50px;
 }
 
 table {
