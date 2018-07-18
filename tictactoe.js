@@ -21,23 +21,18 @@ const winningCombinations = [
 
 function checkWinner() {
     // Check if player has all values of each combination
-    for (let combos of winningCombinations) {
-        console.log("Combos: " + combos);
-        var matches = 0;
-        for (let items of playerSelections) {
-            if (combos.includes(items)) {
+    console.log("function");
+    for (let i = 0; i < winningCombinations.length; i++) {
+        let matches = 0;
+        console.log("loop 1");
+        for (let j = 0; j < winningCombinations[i].length; j++) {
+            console.log("Matches: " + matches);
+            if (playerSelections.includes(winningCombinations[i][j])) {
                 matches++;
-                if (matches == 3) {
-                    return true;
-                    console.log("win");
-                }
             }
-            // } else { // go to the next combination
-            //     break;
-            // }
-            // if we made it through each combo without returning true,
-            // then there were no matches and player did not win
-            //return false
+            if (matches == 3) {
+                return true;
+            }
         }
     }
 }
@@ -71,7 +66,7 @@ handleClick = function (event) {
 
     playerSelections.push(parseInt(cell.id));
 
-    if (checkWinner(playerSelections)) {
+    if (checkWinner()) {
         alert("Player " + currentPlayer + " wins!")
         resetGame();
     }
@@ -84,6 +79,8 @@ handleClick = function (event) {
     // Swap players
     currentPlayer = nextPlayer;
 }
+
+
 
 var cells = document.querySelectorAll("td");
 

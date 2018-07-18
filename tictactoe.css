@@ -1,12 +1,12 @@
 td {
-    border: 100px solid lightblue;
+    border: 84px solid lightblue;
 }
 
 td:hover {
     background: darkgrey;
-    border: 50px;
+    border: 40px;
 }
 
 table {
-    border: 10px solid grey;
+    border: 6px solid lightgrey;
 }
